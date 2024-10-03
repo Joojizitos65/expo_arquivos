@@ -8,6 +8,8 @@ export default function telaprincipal(){
             <Link href='./Santander'>Santander</Link>
             <Link href='./Sobremim/'>Sobre mim</Link>
             <Link href='/Ifome/'>Ifome</Link>
+            <Link href='./Galeria/'>Galeria</Link>
+            <Link href='./Camera/'>Câmera</Link>
         </View>
     )
 }
