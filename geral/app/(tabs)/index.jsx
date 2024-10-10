@@ -10,6 +10,7 @@ export default function telaprincipal(){
             <Link href='/Ifome/'>Ifome</Link>
             <Link href='./Galeria/'>Galeria</Link>
             <Link href='./Camera/'>Câmera</Link>
+            <Link href='./LocalStorage/'>Memórias</Link>
         </View>
     )
 }
