@@ -10,12 +10,11 @@ export default function CameraApp() {
     const [foto, setFoto] = useState(null);
     const cameraRef = useRef(null);
     const [mostrarFoto, setMostrarFoto] = useState(false);
-    const [facing, setFacing] = useState('back'); // Estado para controlar o lado da câmera
-    const [scanning, setScanning] = useState(false); // Estado para controlar se o scanner está ativo
-    const [qrCodeData, setQrCodeData] = useState(null); // Dados do QR code
-    const [modalVisible, setModalVisible] = useState(false); // Estado do modal
+    const [facing, setFacing] = useState('back');
+    const [scanning, setScanning] = useState(false);
+    const [qrCodeData, setQrCodeData] = useState(null);
+    const [modalVisible, setModalVisible] = useState(false);
 
-    // Pedir permissão da galeria ao carregar o componente
     useEffect(() => {
         const pedirPermissaoGaleria = async () => {
             const { status } = await MediaLibrary.requestPermissionsAsync();
@@ -39,7 +38,7 @@ export default function CameraApp() {
     }
 
     const tirarFoto = async () => {
-        if (cameraRef.current) {  // Verifica se a referência da câmera está disponível
+        if (cameraRef.current) { 
             try {
                 const fotoBase64 = await cameraRef.current.takePictureAsync({
                     quality: 0.5,
@@ -59,7 +58,7 @@ export default function CameraApp() {
             if (permissaoGaleria && foto) {
                 const asset = await MediaLibrary.createAssetAsync(foto.uri);
                 console.log('Foto salva na galeria:', asset.uri);
-                setFoto(null); // Limpar foto após salvar
+                setFoto(null);
                 setMostrarFoto(false);
             } else {
                 console.log('Permissão para salvar na galeria não concedida');
@@ -70,24 +69,24 @@ export default function CameraApp() {
     }
 
     const apagarFoto = () => {
-        setFoto(null); // Limpar foto para tirar outra
+        setFoto(null);
         setMostrarFoto(false);
     }
 
     const toggleCameraFacing = () => {
-        setFacing(facing === 'back' ? 'front' : 'back'); // Alternar entre 'back' e 'front'
+        setFacing(facing === 'back' ? 'front' : 'back');
     }
 
     const handleBarCodeScanned = ({ data }) => {
         setQrCodeData(data);
-        setModalVisible(true); // Abre o modal quando um QR code é escaneado
+        setModalVisible(true);
     };
 
     const abrirUrl = () => {
         if (qrCodeData) {
-            Linking.openURL(qrCodeData); // Abre a URL no navegador
+            Linking.openURL(qrCodeData); 
         }
-        setModalVisible(false); // Fecha o modal
+        setModalVisible(false); 
     };
 
     return (
@@ -119,7 +118,7 @@ export default function CameraApp() {
                 </View>
             </View>
             }
-            {/* Modal para confirmação do QR code */}
+            {}
             <Modal
                 transparent={true}
                 visible={modalVisible}
